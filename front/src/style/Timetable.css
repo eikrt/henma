@@ -1,0 +1,28 @@
+.timeTableButtonNotTaken {
+    background-color: rgb(53, 199, 131);
+    border: none;
+    color: white;
+    padding: 16px 64px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .timeTableButtonTaken {
+    background-color: rgb(255, 72, 0);
+    border: none;
+    color: white;
+    padding: 16px 64px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+.buttonContainer {
+    margin:12%;
+}
+.timeTableContainer {
+    margin:2%;
+}
