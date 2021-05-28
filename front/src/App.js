@@ -3,6 +3,7 @@ import './style/App.css';
 import Schedule from './components/Schedule.js'
 function App() {
   document.body.style='background: linen'
+
   return (
     <div className="App">
       
