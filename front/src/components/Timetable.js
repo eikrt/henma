@@ -20,31 +20,22 @@ const Timetable = ({ calendarValue, times, setTimes }) => {
 
     let [content,setContent] = useState([{ time: '8-9', taken: false, index: 1, buttonRef: useRef(null) }, { time: '9-10', taken: false, index: 2,buttonRef: useRef(null)}, { time: '10-11', taken: false, index: 3 ,buttonRef: useRef(null)}, { time: '11-12', taken: false, index: 4,buttonRef: useRef(null) }, { time: '12-13', taken: false, index: 5,buttonRef: useRef(null) }, { time: '13-14', taken: false, index: 6,buttonRef: useRef(null) }, { time: '14-15', taken: false, index: 7,buttonRef: useRef(null) }, { time: '15-16', taken: false, index: 8,buttonRef: useRef(null) }])
    
-    const getTimesFromAPI = async() => {
-        let response = await fetch("http://localhost:3001/api/times")
+    const getTimesFromAPI = async(calendarValue) => {
+        let response = await fetch(`http://localhost:3001/api/times/${calendarValue}`)
         
           setTimes(await response.json())
     }
     
-   /* const getTimesFromAPI = async() => {
 
-        fetch("localhost:3001/api/times")
-            .then(response => {
-                this.setState({users: response.json()});
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }*/
     useEffect(() => {
         // get content from api
 
         setTimes(content)
         getTimesFromAPI()
        
+        
+    }, [calendarValue], [])
 
-    }, [calendarValue])
-    console.log("times : " , times)
     return (
         
         <div className="timeTableContainer">

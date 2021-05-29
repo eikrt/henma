@@ -2,18 +2,27 @@ import '../style/Schedule.css'
 import Calendar from 'react-calendar'
 import '../style/Calendar.css'
 import { useState } from 'react'
-import { useEffect } from 'react/cjs/react.production.min'
 import Timetable from './Timetable.js'
-const submitCallback = (calendarValue, times) => {
+import { useEffect } from 'react/cjs/react.production.min'
 
-    const content = { calendarValue, times }
-    alert("Aikasi on varattu! :)")
-    // send content to api
-}
 function Schedule() {
 
     const [calendarValue, setCalendarValue] = useState(new Date())
     const [times, setTimes] = useState([{ time: '8-9', taken: false, index: 1 }, { time: '9-10', taken: false, index: 2 }, { time: '10-11', taken: false, index: 3 }, { time: '11-12', taken: false, index: 4 }, { time: '12-13', taken: false, index: 5 }, { time: '13-14', taken: false, index: 6 }, { time: '14-15', taken: false, index: 7 }, { time: '15-16', taken: false, index: 8 }])
+    const [postId, setPostId] = useState()
+    const submitCallback = (calendarValue, times) => {
+
+        const content = { calendarValue, times }
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({calendarValue: calendarValue, times:times})
+        };
+        fetch('http://localhost:3001/api/times/post', requestOptions)
+            .then(response => response.json()).then(data => setPostId(data.id));
+        alert("Aikasi on varattu! :)")
+        // send content to api
+    }
 
     return (
 
