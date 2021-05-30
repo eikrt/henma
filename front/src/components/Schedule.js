@@ -18,7 +18,7 @@ function Schedule() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({calendarValue: calendarValue, times:times})
         };
-        fetch('http://localhost:3001/api/times/post', requestOptions)
+        fetch(`http://localhost:3001/api/times/${calendarValue}`, requestOptions)
             .then(response => response.json()).then(data => setPostId(data.id));
         alert("Aikasi on varattu! :)")
         // send content to api
